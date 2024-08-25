@@ -1,41 +1,163 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
 
-    <h1>Lista de Cursos</h1>
-  <ul id="list">
-    <li>
-        <label>
-            <input type="checkbox"/>
-JavaScript
-        </label>
+    <style>
+      /* Estilo Padrao do li - Remove estilo padrao do css */
 
+      li {
+        list-style-type: none;
+        display: flex;
+        justify-content: space-between;
+        margin-right: 200px;
+        background-color: rgb(232, 234, 234);
+        padding-left: 20px;
+        padding-right: 20px;
+        padding-top: 5px;
         
-    </li>
+      }
 
-        <li>
+      /* Estilo quando checkbox esta marcado */
+      li label:has(input:checked) {
+        /* :has(input:checked) */
+        text-decoration: line-through;
+      
+      }
+      /* Montagem para remover o input da lista */
+
+      /* 1 - Esconder Checkbox */
+      .remover-checkbox {
+        display: none;
+      }
+
+      /* Remover da Lista ao clicar no checkbox */
+      li:has(.remover-checkbox:checked) {
+        /* :has(input:checked) */
+        display: none;
+      }
+
+      p {
+
+        padding-left: 20px;
+      }
+
+
+    </style>
+  </head>
+
+  <body>
+    <h1>Lista de Cursos</h1>
+
+
+    <p>Itens que preciso estudar</p>
+    <ul id="list">
+      <li>
         <label>
-            <input type="checkbox"/>
-Python
+          <input type="checkbox" class="alterar-checkbox" />
+          JavaScript
         </label>
-    </li>
-    
-    </li>
+        <input type="checkbox" class="remover-checkbox" id="item1-remove" />
 
-        <li>
+        <label for="item1-remove">❌</label>
+      </li>
+
+      <li>
         <label>
-            <input type="checkbox"/>
-PHP
+          <input type="checkbox" />
+          Java
         </label>
-    </li>
+        <input type="checkbox" class="remover-checkbox" id="item2-remove" />
 
-</ul>
+        <label for="item2-remove">❌</label>
+      </li>
 
-    
-</body>
+      <li>
+        <label>
+          <input type="checkbox" />
+          C++
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item3-remove" />
+
+        <label for="item3-remove">❌</label>
+
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          C#
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item4-remove" />
+
+        <label for="item4-remove">❌</label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          Ruby
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item5-remove" />
+
+        <label for="item5-remove">❌</label>
+
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          PHP
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item6-remove" />
+
+        <label for="item6-remove">❌</label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          Python
+        </label>
+
+        <input type="checkbox" class="remover-checkbox" id="item7-remove" />
+
+        <label for="item7-remove">❌</label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          Swift
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item8-remove" />
+
+        <label for="item8-remove">❌</label>
+
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          Go
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item9-remove" />
+
+        <label for="item9-remove">❌</label>
+      </li>
+
+      <li>
+        <label>
+          <input type="checkbox" />
+          Rust
+        </label>
+        <input type="checkbox" class="remover-checkbox" id="item10-remove" />
+
+        <label for="item10-remove">❌</label>
+
+      </li>
+    </ul>
+  </body>
 </html>
