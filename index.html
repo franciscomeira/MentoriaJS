@@ -144,20 +144,49 @@
           Go
         </label>
         <input type="checkbox" class="remover-checkbox" id="item9-remove" />
-
         <label for="item9-remove">❌</label>
       </li>
 
-      <li>
+      <li id="listItem">
         <label>
           <input type="checkbox" />
           Rust
         </label>
         <input type="checkbox" class="remover-checkbox" id="item10-remove" />
-
         <label for="item10-remove">❌</label>
-
       </li>
     </ul>
+    
+    <input type="text" id="addList" />
+    <input type="button" onclick="addItem()" value="Add na lista">
+
+    <script>
+      // Adicionar item na lista
+      // 1. Receber o valor do input
+      // 2. Criar item na lista   <--
+      // 2.1. ✅ pegar um item igual
+      // 2.2. ✅ clonar ele
+      // 2.3. adicionar na lista
+      // 2.3.1. pegar a lista
+      // 2.3.2. adicioanr o item
+      
+      function addItem () {
+        // 2.1. pega um item igual
+        const originalElement = document.querySelector("#listItem");
+        const newText = document.querySelector("#addList").nodeValue;
+        // 2.2. cola o item
+        const cloneElement = originalElement.cloneNode(true);
+        console.log(cloneElement);
+        console.log(addList)
+
+        // 2.3.1. pegar a lista
+        const listElement = document.querySelector("#list")
+        
+        // 2.3.2. adicioanr o item
+        listElement.appendChild(cloneElement);
+      }
+
+    </script>
+
   </body>
 </html>
