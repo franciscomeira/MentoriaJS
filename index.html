@@ -17,14 +17,12 @@
         padding-left: 20px;
         padding-right: 20px;
         padding-top: 5px;
-        
       }
 
       /* Estilo quando checkbox esta marcado */
       li label:has(input:checked) {
         /* :has(input:checked) */
         text-decoration: line-through;
-      
       }
       /* Montagem para remover o input da lista */
 
@@ -40,17 +38,13 @@
       }
 
       p {
-
         padding-left: 20px;
       }
-
-
     </style>
   </head>
 
   <body>
     <h1>Lista de Cursos</h1>
-
 
     <p>Itens que preciso estudar</p>
     <ul id="list">
@@ -82,7 +76,6 @@
         <input type="checkbox" class="remove-checkbox" id="item3-remove" />
 
         <label for="item3-remove">❌</label>
-
       </li>
 
       <li>
@@ -103,7 +96,6 @@
         <input type="checkbox" class="remove-checkbox" id="item5-remove" />
 
         <label for="item5-remove">❌</label>
-
       </li>
 
       <li>
@@ -135,7 +127,6 @@
         <input type="checkbox" class="remove-checkbox" id="item8-remove" />
 
         <label for="item8-remove">❌</label>
-
       </li>
 
       <li>
@@ -149,20 +140,27 @@
 
       <li id="listItem">
         <input type="checkbox" id="item10-toggle" />
-        <label for="item10-toggle" class="toggle-label" >Rust</label>
+        <label for="item10-toggle" class="toggle-label">Rust</label>
         <input type="checkbox" class="remove-checkbox" id="item10-remove" />
         <label for="item10-remove" class="remove-label">❌</label>
       </li>
     </ul>
-    
-    <input type="text" id="newAddinput" />
-    <input type="button" id="newAddButton" onclick="addItem()" value="Add na lista">
 
+    <input type="text" id="newAddinput" />
+    <input
+      type="button"
+      id="newAddButton"
+      onclick="addItem()"
+      value="Add na lista"
+    />
+
+    <button onclick="clearList()">Clear</button>
+    <button onclick="removeConcluded()">removeConcluded</button>
+    
     <script>
       // alterar estrutura do HTML para corresponder a label for input
       // encontrar alternativa para pegar a estrutura de exemplo, sem o id
       // fazer o tracejado funcionar na nova estrutura
-
 
       // fazer o clique na label funcionar corretamente
 
@@ -170,7 +168,7 @@
         return document.querySelector(selector);
       }
 
-      function addItem () {
+      function addItem() {
         //Receber o valor do input
         // 1.1 Pegar o input
         const input = getElement("#newAddinput");
@@ -183,7 +181,7 @@
         const cloneElement = originalElement.cloneNode(true);
         // 2.3. adicionar na lista
         // 2.3.1. pegar a lista
-        const listElement = getElement("#list")
+        const listElement = getElement("#list");
         // 2.3.2. adicionar o item
         listElement.appendChild(cloneElement);
 
@@ -194,9 +192,12 @@
         toggleLabel.textContent = input.value;
 
         // fazer o botão de remover funcionar corretamente
+        //  Quantidade de filhos da lista (Itens)
         const listLength = listElement.children.length;
 
+        // Criando o ID para o botao de remover
         const newRemoveCheckboxId = "item" + listLength + "-remove";
+
         const removeLabel = cloneElement.querySelector(".remove-label");
         removeLabel.htmlFor = newRemoveCheckboxId;
 
@@ -204,14 +205,61 @@
         removeCheckbox.id = newRemoveCheckboxId;
       }
 
-      // automatizar cenário de teste
+      /*   // automatizar cenário de teste
       window.onload = function () {
         document.querySelector("#newAddinput").value = "test value " + i;
         document.querySelector("#newAddButton").onclick();
 
+      } */
+
+      //nivel 1
+      function clearList() {
+        /* const list = document.getElementById("list")
+list.innerHTML = '';
+console.log(list) */
+
+        const list = document.querySelector("#list");
+
+        // for (
+        //   /*start*/ let index = 0;
+        //   /*condition*/ index < list.children.length;
+        //   /*step*/ index++
+        // ) {
+        //   const element = list.children[index];
+
+        //   // alt 1. clicando na label
+        //   // problema: esconde e aparece de novo
+        //   // const removeLabel = element.querySelector('label[for*=remove]');
+        //   // removeLabel.click();
+
+        //   // alt2. removendo o filho
+        //   // problema: altera a lista parcialmente
+        //   // list.removeChild(element);
+
+        //   // alt3. esconder os elementos
+        //   // problema: os elementos continuam na estrutura html
+        //   // element.style.display = 'none';
+        // }
+
+        const itemsToRemove = list.children;
+        while(itemsToRemove.length > 0) {
+          const itemToRemove = list.firstChild;
+          list.removeChild(itemToRemove);
+        }
+
       }
 
-    </script>
+      function removeConcluded() {
+        const list = document.querySelector("#list");
 
+        const itemsToRemove = Array.from(list.querySelectorAll("li:has(input[type=checkbox]:checked)"));
+        while(itemsToRemove.length > 0) {
+          const itemToRemove = itemsToRemove.pop();
+          list.removeChild(itemToRemove);
+        }
+      }
+
+      //nivel 2
+    </script>
   </body>
 </html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title id="titleOriginal">Teste 1</title>
+</head>
+<body>
+
+
+    <input type="text" id="myinput" required>
+    <button onclick="alterAlert()">Add value in alert</button>
+  
+
+    <input type="text" id="myinputTitle">
+    <button onclick="alterTitle()">Add new title</button>
+  
+
+  <script>
+    function alterAlert() {
+
+        //Pegar o valor do input
+        const valueInput = document.querySelector('#myinput').value;
+        
+        //Validando
+        
+
+        //Testa
+        alert(valueInput);
+    }
+
+    //Funcao altera Title
+function alterTitle () {
+    //Seach div original
+    //const original = document.querySelector('#titleOriginal')
+    //console.log(original)
+    
+    //Obtem o valor do input
+    const valueInputTitle = document.getElementById('myinputTitle').value;
+
+     //Alterar valor do title
+
+     document.title = valueInputTitle
+     
+}
+
+  </script>
+ 
+
+
+
+
+</body>
+</html>

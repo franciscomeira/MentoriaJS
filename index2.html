@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+        .superp {
+            font-weight: bold;
+            font-size: 4em;
+            color: red;
+        }
+        </style>
+</head>
+<body>
+    <div id="original">
+        <p class="superp">Teste Paragrafo</p>
+    </div>
+    
+    <input type="text" id="myinput">
+    <Button onclick="cloneElement()">Add </Button>
+
+    <script id="meu-script">
+        function cloneElement() {           
+            
+            //Buscando o elemento original / Pega o elemento inteiro com base no id=original
+            const elementOriginal = document.getElementById('original');
+            
+            //Clona o elemento e seus filhos
+            const elementClone = elementOriginal.cloneNode(true)
+
+            //Add no corpo do doc
+           
+            //Obtem o valor do input
+            const valueinput = document.getElementById('myinput').value;
+          
+            //Criar novo paragrafo 
+            const newParagrafo = elementClone.querySelector('p');
+            newParagrafo.textContent = 'Valor input: ' + valueinput
+                      
+            document.body.appendChild(elementClone)
+
+            // set
+            // maps
+            // list
+            
+
+            // debugger
+            // referência
+            // shadow dom
+            
+        }
+
+    </script>
+</body>
+</html>
