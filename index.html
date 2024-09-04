@@ -1,265 +1,290 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
 
-    <style>
-      /* Estilo Padrao do li - Remove estilo padrao do css */
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Document</title>
 
-      li {
-        list-style-type: none;
-        display: flex;
-        justify-content: space-between;
-        margin-right: 200px;
-        background-color: rgb(232, 234, 234);
-        padding-left: 20px;
-        padding-right: 20px;
-        padding-top: 5px;
-      }
+  <style>
+    /* Estilo Padrao do li - Remove estilo padrao do css */
 
-      /* Estilo quando checkbox esta marcado */
-      li label:has(input:checked) {
-        /* :has(input:checked) */
-        text-decoration: line-through;
-      }
-      /* Montagem para remover o input da lista */
+    li {
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      margin-right: 200px;
+      background-color: rgb(232, 234, 234);
+      padding-left: 20px;
+      padding-right: 20px;
+      padding-top: 5px;
+    }
 
-      /* 1 - Esconder Checkbox */
-      .remove-checkbox {
-        display: none;
-      }
+    /* Estilo quando checkbox esta marcado */
+    li label:has(input:checked) {
+      /* :has(input:checked) */
+      text-decoration: line-through;
+    }
 
-      /* Remover da Lista ao clicar no checkbox */
-      li:has(.remove-checkbox:checked) {
-        /* :has(input:checked) */
-        display: none;
-      }
+    /* Montagem para remover o input da lista */
 
-      p {
-        padding-left: 20px;
-      }
-    </style>
-  </head>
+    /* 1 - Esconder Checkbox */
+    .remove-checkbox {
+      display: none;
+      background-color: aquamarine;
+      
+    }
 
-  <body>
-    <h1>Lista de Cursos</h1>
+    /* Remover da Lista ao clicar no checkbox */
+    li:has(.remove-checkbox:checked) {
+      /* :has(input:checked) */
+      display: none;
+    }
 
-    <p>Itens que preciso estudar</p>
-    <ul id="list">
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" class="alterar-checkbox" />
-          JavaScript
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item1-remove" />
+    p {
+      padding-left: 20px;
+    }
+  </style>
+</head>
 
-        <label for="item1-remove">❌</label>
-      </li>
+<body>
+  <h1>Lista de Cursos</h1>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          Java
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item2-remove" />
+  <p>Itens que preciso estudar</p>
+  <ul id="list">
 
-        <label for="item2-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item1-toggle" />
+      <label for="item1-toggle" class="toggle-label">JavaScript</label>
+      <input type="checkbox" class="remove-checkbox" id="item1-remove" />
+      <label for="item1-remove" class="remove-label">❌</label>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          C++
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item3-remove" />
+    </li>
 
-        <label for="item3-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item2-toggle" />
+      <label for="item2-toggle" class="toggle-label"> Java</label>
+      <input type="checkbox" class="remove-checkbox" id="item2-remove" />
+      <label for="item2-remove" class="remove-label">❌</label>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          C#
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item4-remove" />
+    </li>
 
-        <label for="item4-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item3-toggle" />
+      <label for="item3-toggle" class="toggle-label"> C++</label>
+      <input type="checkbox" class="remove-checkbox" id="item3-remove" />
+      <label for="item3-remove" class="remove-label">❌</label>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          Ruby
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item5-remove" />
+    </li>
 
-        <label for="item5-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item4-toggle" />
+      <label for="item4-toggle" class="toggle-label"> C#</label>
+      <input type="checkbox" class="remove-checkbox" id="item4-remove" />
+      <label for="item4-remove" class="remove-label">❌</label>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          PHP
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item6-remove" />
+    </li>
 
-        <label for="item6-remove">❌</label>
-      </li>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          Python
-        </label>
+    <li id="listItem">
+      <input type="checkbox" id="item5-toggle" />
+      <label for="item5-toggle" class="toggle-label">Ruby</label>
+      <input type="checkbox" class="remove-checkbox" id="item5-remove" />
+      <label for="item6-remove" class="remove-label">❌</label>
 
-        <input type="checkbox" class="remove-checkbox" id="item7-remove" />
+    </li>
 
-        <label for="item7-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item6-toggle" />
+      <label for="item6-toggle" class="toggle-label">PHP</label>
+      <input type="checkbox" class="remove-checkbox" id="item6-remove" />
+      <label for="item6-remove" class="remove-label">❌</label>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          Swift
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item8-remove" />
+    </li>
+    <li id="listItem">
+      <input type="checkbox" id="item7-toggle" />
+      <label for="item7-toggle" class="toggle-label">Python</label>
+      <input type="checkbox" class="remove-checkbox" id="item7-remove" />
+      <label for="item7-remove" class="remove-label">❌</label>
 
-        <label for="item8-remove">❌</label>
-      </li>
+    </li>
+    <li id="listItem">
+      <input type="checkbox" id="item8-toggle" />
+      <label for="item8-toggle" class="toggle-label">Swift</label>
+      <input type="checkbox" class="remove-checkbox" id="item8-remove" />
+      <label for="item8-remove" class="remove-label">❌</label>
+    </li>
 
-      <li>
-        <label class="toggle-label">
-          <input type="checkbox" />
-          Go
-        </label>
-        <input type="checkbox" class="remove-checkbox" id="item9-remove" />
-        <label for="item9-remove">❌</label>
-      </li>
+    <li id="listItem">
+      <input type="checkbox" id="item9-toggle" />
+      <label for="item9-toggle" class="toggle-label">Go</label>
+      <input type="checkbox" class="remove-checkbox" id="item9-remove" />
+      <label for="item9-remove" class="remove-label">❌</label>
+    </li>
 
-      <li id="listItem">
-        <input type="checkbox" id="item10-toggle" />
-        <label for="item10-toggle" class="toggle-label">Rust</label>
-        <input type="checkbox" class="remove-checkbox" id="item10-remove" />
-        <label for="item10-remove" class="remove-label">❌</label>
-      </li>
-    </ul>
 
-    <input type="text" id="newAddinput" />
-    <input
-      type="button"
-      id="newAddButton"
-      onclick="addItem()"
-      value="Add na lista"
-    />
+    <li id="listItem">
+      <input type="checkbox" id="item10-toggle" />
+      <label for="item10-toggle" class="toggle-label">Rust</label>
+      <input type="checkbox" class="remove-checkbox" id="item10-remove" />
+      <label for="item10-remove" class="remove-label">❌</label>
+    </li>
 
-    <button onclick="clearList()">Clear</button>
-    <button onclick="removeConcluded()">removeConcluded</button>
-    
-    <script>
-      // alterar estrutura do HTML para corresponder a label for input
-      // encontrar alternativa para pegar a estrutura de exemplo, sem o id
-      // fazer o tracejado funcionar na nova estrutura
 
-      // fazer o clique na label funcionar corretamente
+    <li id="listItem">
+      <input type="checkbox" id="item11-toggle" />
+      <label for="item11-toggle" class="toggle-label">Rust 2</label>
+      <input type="checkbox" class="remove-checkbox" id="item11-remove" />
+      <label for="item10-remove" class="remove-label">❌</label>
+    </li>
 
-      function getElement(selector) {
-        return document.querySelector(selector);
-      }
+  </ul>
 
-      function addItem() {
-        //Receber o valor do input
-        // 1.1 Pegar o input
-        const input = getElement("#newAddinput");
-        // 1.2 Pegar o valor do input
-        const inputValue = input.value;
 
-        // 2.1. pega um item igual
-        const originalElement = getElement("#listItem");
-        // 2.2. clonar o item
-        const cloneElement = originalElement.cloneNode(true);
-        // 2.3. adicionar na lista
-        // 2.3.1. pegar a lista
-        const listElement = getElement("#list");
-        // 2.3.2. adicionar o item
-        listElement.appendChild(cloneElement);
 
-        // 3. adicionar o valor do input ao novo item
-        // 3.1. pegar a label
-        const toggleLabel = cloneElement.querySelector(".toggle-label");
-        // 3.2. alterar o valor da label
-        toggleLabel.textContent = input.value;
+  <input type="text" id="newAddinput" />
+  <input type="button" id="newAddButton" onclick="addItem()" value="Add na lista" />
 
-        // fazer o botão de remover funcionar corretamente
-        //  Quantidade de filhos da lista (Itens)
-        const listLength = listElement.children.length;
+  <button onclick="clearList()">Clear</button>
+  <button onclick="removeConcluded()">removeConcluded</button>
+  <button type="button" onclick="savePreferences()">Save</button>
 
-        // Criando o ID para o botao de remover
-        const newRemoveCheckboxId = "item" + listLength + "-remove";
+  <script>
+    // alterar estrutura do HTML para corresponder a label for input
+    // encontrar alternativa para pegar a estrutura de exemplo, sem o id
+    // fazer o tracejado funcionar na nova estrutura
 
-        const removeLabel = cloneElement.querySelector(".remove-label");
-        removeLabel.htmlFor = newRemoveCheckboxId;
+    // fazer o clique na label funcionar corretamente
 
-        const removeCheckbox = cloneElement.querySelector(".remove-checkbox");
-        removeCheckbox.id = newRemoveCheckboxId;
-      }
+    function getElement(selector) {
+      return document.querySelector(selector);
+    }
 
-      /*   // automatizar cenário de teste
-      window.onload = function () {
-        document.querySelector("#newAddinput").value = "test value " + i;
-        document.querySelector("#newAddButton").onclick();
+    function addItem() {
+      //Receber o valor do input
+      // 1.1 Pegar o input
+      const input = getElement("#newAddinput");
+      // 1.2 Pegar o valor do input
+      const inputValue = input.value;
 
-      } */
+      // 2.1. pega um item igual
+      const originalElement = getElement("#listItem");
+      // 2.2. clonar o item
+      const cloneElement = originalElement.cloneNode(true);
+      // 2.3. adicionar na lista
+      // 2.3.1. pegar a lista
+      const listElement = getElement("#list");
+      // 2.3.2. adicionar o item
+      listElement.appendChild(cloneElement);
 
-      //nivel 1
-      function clearList() {
-        /* const list = document.getElementById("list")
+      // 3. adicionar o valor do input ao novo item
+      // 3.1. pegar a label
+      const toggleLabel = cloneElement.querySelector(".toggle-label");
+      // 3.2. alterar o valor da label
+      toggleLabel.textContent = input.value;
+
+      // fazer o botão de remover funcionar corretamente
+      //  Quantidade de filhos da lista (Itens)
+      const listLength = listElement.children.length;
+
+      // Criando o ID para o botao de remover
+      const newRemoveCheckboxId = "item" + listLength + "-remove";
+
+      const removeLabel = cloneElement.querySelector(".remove-label");
+      removeLabel.htmlFor = newRemoveCheckboxId;
+
+      const removeCheckbox = cloneElement.querySelector(".remove-checkbox");
+      removeCheckbox.id = newRemoveCheckboxId;
+    }
+
+    /*   // automatizar cenário de teste
+    window.onload = function () {
+      document.querySelector("#newAddinput").value = "test value " + i;
+      document.querySelector("#newAddButton").onclick();
+
+    } */
+
+    //nivel 1
+    function clearList() {
+      /* const list = document.getElementById("list")
 list.innerHTML = '';
 console.log(list) */
 
-        const list = document.querySelector("#list");
+      const list = document.querySelector("#list");
 
-        // for (
-        //   /*start*/ let index = 0;
-        //   /*condition*/ index < list.children.length;
-        //   /*step*/ index++
-        // ) {
-        //   const element = list.children[index];
+      // for (
+      //   /*start*/ let index = 0;
+      //   /*condition*/ index < list.children.length;
+      //   /*step*/ index++
+      // ) {
+      //   const element = list.children[index];
 
-        //   // alt 1. clicando na label
-        //   // problema: esconde e aparece de novo
-        //   // const removeLabel = element.querySelector('label[for*=remove]');
-        //   // removeLabel.click();
+      //   // alt 1. clicando na label
+      //   // problema: esconde e aparece de novo
+      //   // const removeLabel = element.querySelector('label[for*=remove]');
+      //   // removeLabel.click();
 
-        //   // alt2. removendo o filho
-        //   // problema: altera a lista parcialmente
-        //   // list.removeChild(element);
+      //   // alt2. removendo o filho
+      //   // problema: altera a lista parcialmente
+      //   // list.removeChild(element);
 
-        //   // alt3. esconder os elementos
-        //   // problema: os elementos continuam na estrutura html
-        //   // element.style.display = 'none';
-        // }
+      //   // alt3. esconder os elementos
+      //   // problema: os elementos continuam na estrutura html
+      //   // element.style.display = 'none';
+      // }
 
-        const itemsToRemove = list.children;
-        while(itemsToRemove.length > 0) {
-          const itemToRemove = list.firstChild;
-          list.removeChild(itemToRemove);
-        }
-
+      const itemsToRemove = list.children;
+      while (itemsToRemove.length > 0) {
+        const itemToRemove = list.firstChild;
+        list.removeChild(itemToRemove);
       }
 
-      function removeConcluded() {
-        const list = document.querySelector("#list");
+    }
 
-        const itemsToRemove = Array.from(list.querySelectorAll("li:has(input[type=checkbox]:checked)"));
-        while(itemsToRemove.length > 0) {
-          const itemToRemove = itemsToRemove.pop();
-          list.removeChild(itemToRemove);
-        }
+    function removeConcluded() {
+      const list = document.querySelector("#list");
+
+      const itemsToRemove = Array.from(list.querySelectorAll("li:has(input[type=checkbox]:checked)"));
+      while (itemsToRemove.length > 0) {
+        const itemToRemove = itemsToRemove.pop();
+        list.removeChild(itemToRemove);
       }
+    }
 
-      //nivel 2
-    </script>
-  </body>
+
+    // Função para salvar as preferências no localStorage
+    function savePreferences() {
+      //Selecionado o objeto
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      //Grava no local storage
+      checkboxes.forEach(checkbox => {
+        localStorage.setItem(checkbox.id, checkbox.checked);
+       
+      });
+      
+      alert('Preferências salvas com sucesso!');
+    }
+
+    // Função para carregar as preferências do localStorage
+    function loadPreferences() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        const isChecked = localStorage.getItem(checkbox.id) === 'true';
+        checkbox.checked = isChecked;
+       
+      });
+      
+    }
+
+    // Chama a função para carregar as preferências ao carregar a página
+    window.onload = loadPreferences;
+
+    //1. corrigir bug do primeiro item
+    //2. salvar lista quando houver mudança
+    //3. salvar novos itens também
+
+      
+  </script>
+</body>
+
 </html>
