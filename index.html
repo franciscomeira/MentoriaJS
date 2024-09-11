@@ -44,6 +44,10 @@
     p {
       padding-left: 20px;
     }
+
+    #list-item-reference {
+      display: none;
+    }
   </style>
 </head>
 
@@ -51,17 +55,19 @@
   <h1>Lista de Cursos</h1>
 
   <p>Itens que preciso estudar</p>
+
+  <li class="listItem" id="list-item-reference">
+    <input type="checkbox" id="item1-toggle" />
+    <label for="item1-toggle" class="toggle-label">JavaScript</label>
+    <input type="checkbox" class="remove-checkbox" id="item1-remove" />
+    <label for="item1-remove" class="remove-label">❌</label>
+  </li>
+
   <ul id="list">
 
-    <li id="listItem">
-      <input type="checkbox" id="item1-toggle" />
-      <label for="item1-toggle" class="toggle-label">JavaScript</label>
-      <input type="checkbox" class="remove-checkbox" id="item1-remove" />
-      <label for="item1-remove" class="remove-label">❌</label>
+    <!-- 
 
-    </li>
-
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item2-toggle" />
       <label for="item2-toggle" class="toggle-label"> Java</label>
       <input type="checkbox" class="remove-checkbox" id="item2-remove" />
@@ -69,7 +75,7 @@
 
     </li>
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item3-toggle" />
       <label for="item3-toggle" class="toggle-label"> C++</label>
       <input type="checkbox" class="remove-checkbox" id="item3-remove" />
@@ -77,7 +83,7 @@
 
     </li>
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item4-toggle" />
       <label for="item4-toggle" class="toggle-label"> C#</label>
       <input type="checkbox" class="remove-checkbox" id="item4-remove" />
@@ -86,7 +92,7 @@
     </li>
 
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item5-toggle" />
       <label for="item5-toggle" class="toggle-label">Ruby</label>
       <input type="checkbox" class="remove-checkbox" id="item5-remove" />
@@ -94,28 +100,28 @@
 
     </li>
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item6-toggle" />
       <label for="item6-toggle" class="toggle-label">PHP</label>
       <input type="checkbox" class="remove-checkbox" id="item6-remove" />
       <label for="item6-remove" class="remove-label">❌</label>
 
     </li>
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item7-toggle" />
       <label for="item7-toggle" class="toggle-label">Python</label>
       <input type="checkbox" class="remove-checkbox" id="item7-remove" />
       <label for="item7-remove" class="remove-label">❌</label>
 
     </li>
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item8-toggle" />
       <label for="item8-toggle" class="toggle-label">Swift</label>
       <input type="checkbox" class="remove-checkbox" id="item8-remove" />
       <label for="item8-remove" class="remove-label">❌</label>
     </li>
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item9-toggle" />
       <label for="item9-toggle" class="toggle-label">Go</label>
       <input type="checkbox" class="remove-checkbox" id="item9-remove" />
@@ -123,7 +129,7 @@
     </li>
 
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item10-toggle" />
       <label for="item10-toggle" class="toggle-label">Rust</label>
       <input type="checkbox" class="remove-checkbox" id="item10-remove" />
@@ -131,12 +137,12 @@
     </li>
 
 
-    <li id="listItem">
+    <li class="listItem">
       <input type="checkbox" id="item11-toggle" />
       <label for="item11-toggle" class="toggle-label">Rust 2</label>
       <input type="checkbox" class="remove-checkbox" id="item11-remove" />
       <label for="item10-remove" class="remove-label">❌</label>
-    </li>
+    </li> -->
 
   </ul>
 
@@ -147,7 +153,7 @@
 
   <button onclick="clearList()">Clear</button>
   <button onclick="removeConcluded()">removeConcluded</button>
-  <button type="button" onclick="savePreferences()">Save</button>
+  <!---<button type="button" onclick="savePreferences()">Save</button> --->
 
   <script>
     // alterar estrutura do HTML para corresponder a label for input
@@ -167,10 +173,28 @@
       // 1.2 Pegar o valor do input
       const inputValue = input.value;
 
+      createAndAttachElement(inputValue);
+
+      savePreferences()
+
+    }
+
+    function createAndAttachElement(value) {
       // 2.1. pega um item igual
-      const originalElement = getElement("#listItem");
+      const originalElement = getElement("#list-item-reference");
       // 2.2. clonar o item
       const cloneElement = originalElement.cloneNode(true);
+      cloneElement.id = '';
+
+      //debugger
+
+      //Alterando Checkbox para false
+      const cloneRemoveCheckbox = cloneElement.querySelector('.remove-checkbox')
+      const cloneRemoveToggleCheckbox = cloneElement.querySelector('[id*="toggle"]')
+
+      cloneRemoveCheckbox.checked = false
+      cloneRemoveToggleCheckbox.checked = false
+
       // 2.3. adicionar na lista
       // 2.3.1. pegar a lista
       const listElement = getElement("#list");
@@ -181,7 +205,7 @@
       // 3.1. pegar a label
       const toggleLabel = cloneElement.querySelector(".toggle-label");
       // 3.2. alterar o valor da label
-      toggleLabel.textContent = input.value;
+      toggleLabel.textContent = value;
 
       // fazer o botão de remover funcionar corretamente
       //  Quantidade de filhos da lista (Itens)
@@ -254,32 +278,74 @@ console.log(list) */
 
     // Função para salvar as preferências no localStorage
     function savePreferences() {
-      //Selecionado o objeto
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      //Grava no local storage
-      checkboxes.forEach(checkbox => {
-        localStorage.setItem(checkbox.id, checkbox.checked);
-       
-      });
       
-      alert('Preferências salvas com sucesso!');
+    // <li class="listItem">
+    //   <input type="checkbox" id="item11-toggle" />
+    //   <label for="item11-toggle" class="toggle-label">Rust 2</label>
+    //   <input type="checkbox" class="remove-checkbox" id="item11-remove" />
+    //   <label for="item10-remove" class="remove-label">❌</label>
+    // </li>
+
+      //Selecionado o objeto
+      const listItem = document.querySelectorAll('.listItem');
+
+      const allItems = [];
+      //Grava no local storage
+      listItem.forEach(listItem => {
+        const toggleCheckbox = listItem.querySelector('[id*=toggle]')
+        const checkboxId = toggleCheckbox.id;
+        const idSplitted = checkboxId.split('-');
+        const desiredId = idSplitted[0];
+        
+        const toggleLabel = listItem.querySelector('[for*=toggle]')
+        const removeCheckbox = listItem.querySelector('[id*=remove]')
+
+        const itemObject = {
+          id: desiredId,
+          checked: toggleCheckbox.checked,
+          label: toggleLabel.textContent,
+          removed: removeCheckbox.checked,
+        };
+
+        allItems.push(itemObject);
+      });
+
+      localStorage.setItem("items", JSON.stringify(allItems));
+
+      // alert('Preferências salvas com sucesso!');
     }
 
     // Função para carregar as preferências do localStorage
     function loadPreferences() {
-      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
-      checkboxes.forEach(checkbox => {
-        const isChecked = localStorage.getItem(checkbox.id) === 'true';
-        checkbox.checked = isChecked;
-       
+      const allItems = localStorage.getItem("items");
+      const allItemsArray = JSON.parse(allItems);
+
+      allItemsArray.forEach(item => {
+        createAndAttachElement(item.label);
+        // console.log(item);
       });
+
+      // const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      // // console.log(checkboxes, localStorage);
+
+      // // [22]
+      // checkboxes.forEach(checkbox => {
+      //   const isChecked = localStorage.getItem(checkbox.id) === 'true';
+      //   checkbox.checked = isChecked;
+       
+      // });
+
+      // [23]
       
+      // Array.from(localStorage).forEach(key => {
+      //   console.log(key, localStorage.getItem(key));
+      // })
     }
 
     // Chama a função para carregar as preferências ao carregar a página
     window.onload = loadPreferences;
 
-    //1. corrigir bug do primeiro item
+    //1. corrigir bug do primeiro item (Resolvido)
     //2. salvar lista quando houver mudança
     //3. salvar novos itens também
 
